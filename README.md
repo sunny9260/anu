@@ -73,3 +73,23 @@ python app.py
 - Permission errors writing files: run the app from a folder where your user account has write access.
 - Windows audio control failures: install `pycaw` and verify your device drivers are up to date.
 - Slow model training: ensure the captured face images are clear and well-lit, and avoid large background clutter.
+
+## Testing
+
+Install test dependencies:
+
+```bash
+python -m pip install pytest
+```
+
+Run the test suite:
+
+```bash
+pytest
+```
+
+The test suite includes:
+
+- API route checks for `/status`, `/set_lock_mode`, `/trigger_unlock`, `/tasks`, and `/rules`
+- application helper tests for `open_application()` behavior
+- validation of JSON response formatting and expected behavior

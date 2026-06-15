@@ -5,3 +5,4 @@ pycaw
 psutil
 transformers
 torch
+pytest
