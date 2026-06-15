@@ -1,0 +1,469 @@
+{
+    "tasks": [
+        {
+            "id": 1,
+            "text": "Set up J.A.R.V.I.S. Core Security Suite",
+            "completed": true,
+            "timestamp": "12:00 PM"
+        },
+        {
+            "id": 2,
+            "text": "Train personal face recognition profile",
+            "completed": true,
+            "timestamp": "12:05 PM"
+        },
+        {
+            "id": 3,
+            "text": "Configure process control rules",
+            "completed": true,
+            "timestamp": "12:10 PM"
+        }
+    ],
+    "rules": [
+        {
+            "id": 1,
+            "process": "notepad.exe",
+            "description": "Prevent Notepad during secure sessions"
+        }
+    ],
+    "records": [
+        {
+            "timestamp": "2026-06-13 11:46:48",
+            "category": "security",
+            "message": "Security clearance verified. PC unlocked.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-06-13 11:46:31",
+            "category": "security",
+            "message": "PC Status locked. Mode: OVERLAY.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-06-13 11:46:00",
+            "category": "security",
+            "message": "Security clearance verified. PC unlocked.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-06-13 11:45:59",
+            "category": "security",
+            "message": "PC Status locked. Mode: OVERLAY.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-06-13 11:44:48",
+            "category": "security",
+            "message": "Security clearance verified. PC unlocked.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-06-13 11:44:40",
+            "category": "security",
+            "message": "PC Status locked. Mode: OVERLAY.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-06-13 11:40:40",
+            "category": "security",
+            "message": "Security clearance verified. PC unlocked.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-06-13 11:40:38",
+            "category": "security",
+            "message": "PC Status locked. Mode: OVERLAY.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-06-13 11:40:28",
+            "category": "security",
+            "message": "Security clearance verified. PC unlocked.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-06-13 11:40:21",
+            "category": "security",
+            "message": "PC Status locked. Mode: OVERLAY.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-06-13 11:40:02",
+            "category": "security",
+            "message": "Security clearance verified. PC unlocked.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-06-13 11:39:46",
+            "category": "security",
+            "message": "PC Status locked. Mode: OVERLAY.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-06-13 11:39:30",
+            "category": "security",
+            "message": "Security clearance verified. PC unlocked.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-06-13 11:39:23",
+            "category": "security",
+            "message": "PC Status locked. Mode: OVERLAY.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-06-13 11:39:13",
+            "category": "security",
+            "message": "Security clearance verified. PC unlocked.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-06-13 11:39:03",
+            "category": "security",
+            "message": "PC Status locked. Mode: OVERLAY.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-06-13 11:38:53",
+            "category": "security",
+            "message": "Security clearance verified. PC unlocked.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-06-13 11:38:52",
+            "category": "security",
+            "message": "PC Status locked. Mode: OVERLAY.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-06-13 11:38:42",
+            "category": "security",
+            "message": "Security clearance verified. PC unlocked.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-06-13 11:38:29",
+            "category": "security",
+            "message": "PC Status locked. Mode: OVERLAY.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-06-13 11:38:19",
+            "category": "security",
+            "message": "Security clearance verified. PC unlocked.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-06-13 11:38:14",
+            "category": "security",
+            "message": "PC Status locked. Mode: OVERLAY.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-06-13 11:38:04",
+            "category": "security",
+            "message": "Security clearance verified. PC unlocked.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-06-13 11:37:20",
+            "category": "security",
+            "message": "PC Status locked. Mode: OVERLAY.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-06-13 11:37:10",
+            "category": "security",
+            "message": "Security clearance verified. PC unlocked.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-06-13 11:29:52",
+            "category": "security",
+            "message": "PC Status locked. Mode: OVERLAY.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 19:04:05",
+            "category": "security",
+            "message": "Security clearance verified. PC unlocked.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 19:04:02",
+            "category": "security",
+            "message": "PC Status locked. Mode: OVERLAY.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 19:03:18",
+            "category": "security",
+            "message": "Security clearance verified. PC unlocked.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 19:03:12",
+            "category": "security",
+            "message": "PC Status locked. Mode: OVERLAY.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 19:03:01",
+            "category": "security",
+            "message": "Security clearance verified. PC unlocked.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 19:02:58",
+            "category": "security",
+            "message": "PC Status locked. Mode: OVERLAY.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 19:02:12",
+            "category": "security",
+            "message": "Security clearance verified. PC unlocked.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 19:02:12",
+            "category": "security",
+            "message": "PC Status locked. Mode: OVERLAY.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 19:01:57",
+            "category": "security",
+            "message": "Security clearance verified. PC unlocked.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 19:01:47",
+            "category": "security",
+            "message": "PC Status locked. Mode: OVERLAY.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 19:00:33",
+            "category": "security",
+            "message": "Security clearance verified. PC unlocked.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 19:00:32",
+            "category": "security",
+            "message": "PC Status locked. Mode: OVERLAY.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 19:00:06",
+            "category": "security",
+            "message": "Security clearance verified. PC unlocked.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 19:00:03",
+            "category": "security",
+            "message": "PC Status locked. Mode: OVERLAY.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 18:59:55",
+            "category": "voice",
+            "message": "Voice command received: 'web cam off'",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 18:59:35",
+            "category": "security",
+            "message": "Security clearance verified. PC unlocked.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 18:59:35",
+            "category": "security",
+            "message": "PC Status locked. Mode: OVERLAY.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 18:58:49",
+            "category": "security",
+            "message": "Security clearance verified. PC unlocked.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 18:58:47",
+            "category": "security",
+            "message": "PC Status locked. Mode: OVERLAY.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 18:58:23",
+            "category": "security",
+            "message": "Security clearance verified. PC unlocked.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 18:58:16",
+            "category": "security",
+            "message": "PC Status locked. Mode: OVERLAY.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 18:57:34",
+            "category": "voice",
+            "message": "Voice command received: 'rakazone/kick'",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 18:57:14",
+            "category": "system",
+            "message": "Searched web for: 'kick'.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 18:57:13",
+            "category": "voice",
+            "message": "Voice command received: 'open kick'",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 18:56:57",
+            "category": "system",
+            "message": "Opened YouTube in browser.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 18:56:57",
+            "category": "voice",
+            "message": "Voice command received: 'open youtube'",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 18:56:40",
+            "category": "voice",
+            "message": "Voice command received: 'hello'",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 18:55:02",
+            "category": "security",
+            "message": "Security clearance verified. PC unlocked.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 18:55:00",
+            "category": "security",
+            "message": "PC Status locked. Mode: OVERLAY.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 13:58:31",
+            "category": "voice",
+            "message": "Voice command received: 'what is the owner name'",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 13:58:14",
+            "category": "voice",
+            "message": "Voice command received: 'what is my name'",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 13:57:45",
+            "category": "voice",
+            "message": "Voice command received: 'what can you do'",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 13:57:12",
+            "category": "voice",
+            "message": "Voice command received: 'what can you do'",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 13:56:52",
+            "category": "security",
+            "message": "Security clearance verified. PC unlocked.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 13:56:52",
+            "category": "security",
+            "message": "PC Status locked. Mode: OVERLAY.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 13:56:52",
+            "category": "voice",
+            "message": "Voice command received: 'exit the youtube'",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 13:56:39",
+            "category": "security",
+            "message": "Security clearance verified. PC unlocked.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 13:56:39",
+            "category": "security",
+            "message": "PC Status locked. Mode: OVERLAY.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 13:56:39",
+            "category": "voice",
+            "message": "Voice command received: 'exit the youtube'",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 13:55:58",
+            "category": "system",
+            "message": "Opened YouTube in browser.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 13:55:58",
+            "category": "voice",
+            "message": "Voice command received: 'open youtube'",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 13:42:35",
+            "category": "security",
+            "message": "Security clearance verified. PC unlocked.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 13:42:33",
+            "category": "security",
+            "message": "PC Status locked. Mode: OVERLAY.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 13:42:31",
+            "category": "task",
+            "message": "Directive completed: 'Configure process control rules'.",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 13:41:58",
+            "category": "voice",
+            "message": "Voice command received: 'can you expain it'",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 13:41:38",
+            "category": "voice",
+            "message": "Voice command received: 'what are the task for toay'",
+            "metadata": {}
+        },
+        {
+            "timestamp": "2026-05-23 13:41:12",
+            "category": "voice",
+            "message": "Voice command received: 'hello'",
+            "metadata": {}
+        }
+    ]
+}

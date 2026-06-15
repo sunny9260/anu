@@ -1,0 +1,93 @@
+{
+    "intents": [
+        {
+            "tag": "greet",
+            "patterns": ["hello", "hi", "hey", "wake up", "hi jarvis", "hello jarvis", "wake up jarvis"],
+            "responses": [
+                "Hello, Sir. Jarvis systems online. All systems operational. How may I assist you?",
+                "System online, Sir. Operational status: nominal. Ready for your directives."
+            ]
+        },
+        {
+            "tag": "whoareyou",
+            "patterns": ["who are you", "what is your name", "tell me about yourself"],
+            "responses": [
+                "I am J.A.R.V.I.S., your local system manager and secure presence assistant, bound to your profile alone.",
+                "I am Jarvis, your personal offline system intelligence."
+            ]
+        },
+        {
+            "tag": "howareyou",
+            "patterns": ["how are you", "are you doing well", "status report"],
+            "responses": [
+                "I am operating at maximum efficiency, Sir. Thank you.",
+                "All processing cores are stable and running optimal diagnostics, Sir."
+            ]
+        },
+        {
+            "tag": "time",
+            "patterns": ["what time is it", "tell me the time", "current time", "clock"],
+            "responses": [
+                "The current system time is recorded, Sir."
+            ]
+        },
+        {
+            "tag": "joke",
+            "patterns": ["tell me a joke", "make me laugh", "say a joke"],
+            "responses": [
+                "Why did the Wi-Fi router go to therapy? Because it was tired of getting disconnected, Sir.",
+                "There are 10 kinds of people: those who understand binary, and those who don't, Sir.",
+                "What's a programmer's favorite place to hang out? The Foo Bar, Sir."
+            ]
+        },
+        {
+            "tag": "lock",
+            "patterns": ["lock system", "lock pc", "lock the screen", "secure pc"],
+            "responses": [
+                "Locking the system now, Sir."
+            ]
+        },
+        {
+            "tag": "unlock",
+            "patterns": ["unlock system", "unlock pc", "access cleared", "open access"],
+            "responses": [
+                "System unlocked, Sir."
+            ]
+        },
+        {
+            "tag": "volume_up",
+            "patterns": ["volume up", "increase volume", "raise volume", "louder"],
+            "responses": [
+                "Volume increased, Sir."
+            ]
+        },
+        {
+            "tag": "volume_down",
+            "patterns": ["volume down", "decrease volume", "lower volume", "softer"],
+            "responses": [
+                "Volume decreased, Sir."
+            ]
+        },
+        {
+            "tag": "volume_mute",
+            "patterns": ["mute system", "mute speaker", "silence audio", "mute"],
+            "responses": [
+                "System audio muted, Sir."
+            ]
+        },
+        {
+            "tag": "volume_unmute",
+            "patterns": ["unmute system", "unmute speaker", "restore audio", "unmute"],
+            "responses": [
+                "System audio restored, Sir."
+            ]
+        },
+        {
+            "tag": "minimize",
+            "patterns": ["minimize windows", "show desktop", "minimize all", "desktop screen"],
+            "responses": [
+                "Minimizing all active applications, Sir."
+            ]
+        }
+    ]
+}

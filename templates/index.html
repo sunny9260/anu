@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J.A.R.V.I.S. - PC Manager & Security Assistant</title>
+    <!-- Google Fonts: Orbitron & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Fullscreen Lock Screen Overlay -->
+    <div id="lock-screen-overlay" class="lock-screen-overlay hidden">
+        <div class="lock-container">
+            <div class="scanner-circle-outer">
+                <div class="scanner-circle-inner">
+                    <i class="fa-solid fa-fingerprint fingerprint-icon"></i>
+                </div>
+                <div class="scanner-beam"></div>
+            </div>
+            
+            <h1 class="lock-title">SECURITY LOCKOUT</h1>
+            <p class="lock-subtitle">BIOMETRIC FIELD OF VISION SCANNING...</p>
+            <div class="biometric-indicator">
+                <span id="biometric-text">UNAUTHORIZED TARGET DETECTED</span>
+            </div>
+            
+            <div class="bypass-box">
+                <p>System Bypass Authorization</p>
+                <div class="bypass-input-group">
+                    <input type="password" id="bypass-password" placeholder="Enter Secure Passcode">
+                    <button id="btn-bypass-unlock" onclick="attemptBypass()">UNLOCK</button>
+                </div>
+                <p id="bypass-error" class="error-msg hidden">Credentials Rejected</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard UI -->
+    <div class="dashboard-wrapper">
+        <!-- Sidebar Panel -->
+        <aside class="sidebar-panel">
+            <div class="brand-header">
+                <div class="arc-reactor-small">
+                    <div class="arc-core-small"></div>
+                </div>
+                <div class="brand-title">
+                    <h2>J.A.R.V.I.S.</h2>
+                    <span>PC MANAGER & GUARDIAN</span>
+                </div>
+            </div>
+
+            <!-- Status Indicators -->
+            <div class="status-panel">
+                <h3><i class="fa-solid fa-circle-nodes"></i> Core Status</h3>
+                <div class="status-grid">
+                    <div class="status-item">
+                        <span class="status-label">Access State</span>
+                        <span id="badge-system-lock" class="status-value active">SECURED</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Owner Recognition</span>
+                        <span id="badge-owner-detected" class="status-value offline">NOT DETECTED</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Camera Sensor</span>
+                        <span id="badge-camera-stream" class="status-value active">ONLINE</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Speech Config Personalization -->
+            <div class="status-panel">
+                <h3><i class="fa-solid fa-sliders"></i> Voice Customization</h3>
+                <div class="voice-settings-box">
+                    <div class="setting-row">
+                        <label for="voice-select">Voice Model</label>
+                        <select id="voice-select" onchange="saveVoiceSettings()"></select>
+                    </div>
+                    <div class="setting-row">
+                        <label for="voice-pitch">Pitch (Core Frequency)</label>
+                        <div class="slider-val-wrapper">
+                            <input type="range" id="voice-pitch" min="0.5" max="2" step="0.1" value="0.9" onchange="saveVoiceSettings()">
+                            <span id="pitch-val">0.9</span>
+                        </div>
+                    </div>
+                    <div class="setting-row">
+                        <label for="voice-rate">Velocity (Speech Rate)</label>
+                        <div class="slider-val-wrapper">
+                            <input type="range" id="voice-rate" min="0.5" max="2" step="0.1" value="1.0" onchange="saveVoiceSettings()">
+                            <span id="rate-val">1.0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Voice Control Console -->
+            <div class="voice-panel">
+                <h3><i class="fa-solid fa-microphone-lines"></i> Interactive Core</h3>
+                <div class="arc-reactor-container">
+                    <div class="arc-reactor" id="voice-arc-reactor">
+                        <div class="arc-ring"></div>
+                        <div class="arc-coil coil-1"></div>
+                        <div class="arc-coil coil-2"></div>
+                        <div class="arc-coil coil-3"></div>
+                        <div class="arc-coil coil-4"></div>
+                        <div class="arc-coil coil-5"></div>
+                        <div class="arc-coil coil-6"></div>
+                        <div class="arc-reactor-core"></div>
+                    </div>
+                </div>
+                
+                <div class="voice-wave-container hidden" id="voice-wave">
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                </div>
+
+                <div class="voice-status" id="voice-status-text">Initializing voice recognition...</div>
+
+                <div class="text-cmd-fallback">
+                    <input type="text" id="text-command-input" placeholder="Initiate command string..." onkeydown="if(event.key === 'Enter') sendTextCommand()">
+                    <button onclick="sendTextCommand()"><i class="fa-solid fa-arrow-right-long"></i></button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="top-nav">
+                <div class="nav-left">
+                    <h1 id="dashboard-tab-title">SECURITY WATCHTOWER</h1>
+                    <p class="timestamp" id="current-time">00:00:00 - SATURDAY</p>
+                </div>
+                <!-- Navigation Tabs -->
+                <div class="nav-center">
+                    <div class="tab-navigation">
+                        <button class="nav-tab active" id="tab-btn-status" onclick="switchTab('status')">
+                            <i class="fa-solid fa-compass"></i> Watchtower
+                        </button>
+                        <button class="nav-tab" id="tab-btn-directives" onclick="switchTab('directives')">
+                            <i class="fa-solid fa-list-check"></i> Directives Desk
+                        </button>
+                        <button class="nav-tab" id="tab-btn-processes" onclick="switchTab('processes')">
+                            <i class="fa-solid fa-microchip"></i> System Core
+                        </button>
+                        <button class="nav-tab" id="tab-btn-records" onclick="switchTab('records')">
+                            <i class="fa-solid fa-database"></i> Registry Logs
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- ==========================================
+                 TAB 1: WATCHTOWER (Status Hub)
+                 ========================================== -->
+            <div class="tab-pane active" id="pane-status">
+                <div class="dashboard-grid">
+                    <!-- Video Feed Card -->
+                    <div class="dashboard-card video-card">
+                        <div class="card-header">
+                            <h2><i class="fa-solid fa-video"></i> Live Biometric Analysis</h2>
+                            <span class="live-pulse">LIVE SENSORS</span>
+                        </div>
+                        <div class="video-feed-container">
+                            <img src="{{ url_for('video_feed') }}" alt="Webcam Video Stream" id="video-stream">
+                            <div class="hud-frame"></div>
+                            <div class="hud-corner top-left"></div>
+                            <div class="hud-corner top-right"></div>
+                            <div class="hud-corner bottom-left"></div>
+                            <div class="hud-corner bottom-right"></div>
+                        </div>
+                    </div>
+
+                    <!-- Telemetry Card -->
+                    <div class="dashboard-card telemetry-card">
+                        <div class="card-header">
+                            <h2><i class="fa-solid fa-heart-pulse"></i> PC Telemetry Mainframe</h2>
+                        </div>
+                        <div class="telemetry-gauges-container">
+                            <!-- CPU Dial -->
+                            <div class="gauge-box">
+                                <div class="svg-gauge-wrapper">
+                                    <svg viewBox="0 0 100 100" class="svg-gauge">
+                                        <circle cx="50" cy="50" r="42" class="gauge-bg-circle"></circle>
+                                        <circle cx="50" cy="50" r="42" class="gauge-active-circle" id="cpu-gauge-circle" stroke-dasharray="264" stroke-dashoffset="264"></circle>
+                                    </svg>
+                                    <span class="gauge-value" id="cpu-value">0%</span>
+                                </div>
+                                <span class="gauge-label"><i class="fa-solid fa-microchip"></i> CPU Core Load</span>
+                            </div>
+                            
+                            <!-- RAM Dial -->
+                            <div class="gauge-box">
+                                <div class="svg-gauge-wrapper">
+                                    <svg viewBox="0 0 100 100" class="svg-gauge">
+                                        <circle cx="50" cy="50" r="42" class="gauge-bg-circle"></circle>
+                                        <circle cx="50" cy="50" r="42" class="gauge-active-circle" id="ram-gauge-circle" stroke-dasharray="264" stroke-dashoffset="264"></circle>
+                                    </svg>
+                                    <span class="gauge-value" id="ram-value">0%</span>
+                                </div>
+                                <span class="gauge-label"><i class="fa-solid fa-memory"></i> RAM Allocation</span>
+                            </div>
+                        </div>
+                        
+                        <div class="telemetry-info-grid">
+                            <div class="tel-info-item">
+                                <span class="lbl">Active Process Threads</span>
+                                <span id="tel-pids" class="val">0</span>
+                            </div>
+                            <div class="tel-info-item">
+                                <span class="lbl">Power Cell (Battery)</span>
+                                <span id="tel-battery" class="val">100%</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Watchtower Settings Panel -->
+                        <div class="watchtower-settings-block">
+                            <h3><i class="fa-solid fa-gear"></i> Watchtower Settings</h3>
+                            <div class="settings-inputs-grid">
+                                <div class="set-input-col">
+                                    <label for="select-lock-mode">Lock Trigger Mode</label>
+                                    <select id="select-lock-mode" onchange="updateConfig()">
+                                        <option value="overlay">Futuristic Security Overlay</option>
+                                        <option value="windows">Windows Native Lock (Win+L)</option>
+                                    </select>
+                                </div>
+                                <div class="set-input-col">
+                                    <label for="input-lock-timeout">Lock Timeout Delay</label>
+                                    <div class="number-input-row">
+                                        <input type="number" id="input-lock-timeout" value="10" min="2" max="120" onchange="updateConfig()">
+                                        <span>seconds</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="btn-lock-now" class="btn btn-danger" onclick="triggerLock()"><i class="fa-solid fa-lock"></i> INITIATE IMMEDIATE LOCK</button>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar Logs Panel -->
+                    <div class="dashboard-card logs-panel-card">
+                        <div class="card-header">
+                            <h2><i class="fa-solid fa-clock-rotate-left"></i> Mainframe Activity Stream</h2>
+                            <button class="clear-btn" onclick="clearLocalLogs()"><i class="fa-solid fa-trash-can"></i></button>
+                        </div>
+                        <div class="logs-console" id="logs-list">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 TAB 2: DIRECTIVES (To-Do & Rules)
+                 ========================================== -->
+            <div class="tab-pane" id="pane-directives">
+                <div class="directives-desk-grid">
+                    <!-- Task Planner Box (To-Do) -->
+                    <div class="dashboard-card directives-card">
+                        <div class="card-header">
+                            <h2><i class="fa-solid fa-list-check"></i> System Directives Planner (What to do)</h2>
+                            <span class="count-badge" id="task-count-badge">0 Active</span>
+                        </div>
+                        
+                        <div class="directives-input-row">
+                            <input type="text" id="task-input" placeholder="Formulate new directive string...">
+                            <button class="btn-add-directive" onclick="addTask()"><i class="fa-solid fa-plus"></i> ADD</button>
+                        </div>
+                        
+                        <div class="directives-list" id="tasks-list">
+                            <!-- Tasks populated by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Security Constraints Box (Rules) -->
+                    <div class="dashboard-card directives-card">
+                        <div class="card-header">
+                            <h2><i class="fa-solid fa-ban"></i> Application Blacklist Rules (What NOT to do)</h2>
+                            <span class="count-badge danger-badge" id="rule-count-badge">0 Rules</span>
+                        </div>
+                        
+                        <div class="directives-input-row">
+                            <input type="text" id="rule-input" placeholder="Process name to restrict (e.g. discord.exe)...">
+                            <button class="btn-add-directive btn-danger-add" onclick="addRule()"><i class="fa-solid fa-shield-halved"></i> BLOCK</button>
+                        </div>
+                        
+                        <div class="directives-list" id="rules-list">
+                            <!-- Rules populated by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 TAB 3: SYSTEM CORE (Process Inspector)
+                 ========================================== -->
+            <div class="tab-pane" id="pane-processes">
+                <div class="dashboard-card processes-card">
+                    <div class="card-header">
+                        <h2><i class="fa-solid fa-microchip"></i> System Core Process Inspector</h2>
+                        <button class="btn-refresh-procs" onclick="loadProcesses()"><i class="fa-solid fa-rotate"></i> REFRESH LIST</button>
+                    </div>
+                    
+                    <div class="processes-table-wrapper">
+                        <table class="processes-table">
+                            <thead>
+                                <tr>
+                                    <th>PID</th>
+                                    <th>Process Name</th>
+                                    <th>CPU Core Load</th>
+                                    <th>RAM Allocation</th>
+                                    <th>Security Directive Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="processes-table-body">
+                                <!-- Running processes populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 TAB 4: REGISTRY LOGS (Logs and Intruders)
+                 ========================================== -->
+            <div class="tab-pane" id="pane-records">
+                <div class="records-view-grid">
+                    <!-- History timeline registry -->
+                    <div class="dashboard-card registry-card">
+                        <div class="card-header">
+                            <h2><i class="fa-solid fa-scroll"></i> Persistent Security Archives</h2>
+                            <div class="registry-filter-row">
+                                <input type="text" id="registry-search" placeholder="Filter log stream..." oninput="filterRegistry()">
+                            </div>
+                        </div>
+                        <div class="registry-table-wrapper">
+                            <table class="registry-table">
+                                <thead>
+                                    <tr>
+                                        <th>Timestamp</th>
+                                        <th>Directive Category</th>
+                                        <th>Event Description Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="registry-table-body">
+                                    <!-- Records populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Intruder snapshot library -->
+                    <div class="dashboard-card intruder-library-card">
+                        <div class="card-header">
+                            <h2><i class="fa-solid fa-camera-retro"></i> Visual Threat Log (Intruder Archives)</h2>
+                        </div>
+                        <div class="intruder-grid" id="intruder-photos-grid">
+                            <!-- Captured intruder cards populated by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
